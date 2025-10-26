@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barreto Digital | Tráfego Pago e Resultados Imediatos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
+
+    header img.logo {
+      height: 55px;
+      transition: transform 0.3s ease;
+    }
+
+    header img.logo:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #00aaff;
+      left: 0;
+      bottom: -6px;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-size: 3.2rem;
+      line-height: 1.2;
+      text-shadow: 0 0 25px rgba(0,0,0,0.8);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 900px;
+      margin-top: 20px;
+      opacity: 0.9;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .cta {
+      margin-top: 40px;
+      padding: 16px 48px;
+      background: linear-gradient(90deg, #00aaff, #0077ff);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 25px rgba(0, 170, 255, 0.5);
+    }
+
+    .cta:hover {
+      background: linear-gradient(90deg, #0077ff, #00aaff);
+      box-shadow: 0 0 35px rgba(0, 170, 255, 0.7);
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 120px 60px;
+      text-align: center;
+    }
+
+    .section-dark {
+      background: #121212;
+    }
+
+    #sobre {
+      background: url('https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat fixed;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+    }
+
+    #sobre h3 {
+      font-size: 2.4rem;
+      color: #00aaff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    #sobre p {
+      max-width: 850px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      line-height: 1.8;
+    }
+
+    h3 {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 35px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #1a1a1a, #0b0b0b);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      padding: 35px;
+      width: 320px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card:last-child {
+      align-self: center;
+      margin: 0 auto;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 35px rgba(0,170,255,0.5);
+    }
+
+    footer {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 60px 20px;
+      color: #aaa;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      width: 65px;
+      height: 65px;
+      bottom: 35px;
+      right: 35px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      font-size: 32px;
+      text-align: center;
+      line-height: 65px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(37, 211, 102, 0.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🔹 Responsividade para celular */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px 20px;
+      }
+
+      nav a {
+        margin: 10px;
+        font-size: 1rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+
+      section {
+        padding: 60px 25px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      #sobre h3 {
+        font-size: 1.8rem;
+      }
+
+      #sobre p {
+        padding: 20px;
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 0.8rem;
+        padding: 40px 10px;
+      }
+
+      .cta {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="https://i.ibb.co/JWsNYtdv/be0ed08e-6b1f-4ef7-9395-653605021250.png" alt="Logo Barreto Digital" />
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Tráfego pago que gera resultado, não promessa.</h2>
+    <p>Especialistas em campanhas que trazem clientes reais e resultados imediatos para o seu negócio. Atualmente geramos mais de 1.500 leads mensais; além de <strong>2 imobiliárias em Santa Catarina</strong>, <strong>3 imobiliárias em São Paulo</strong>, <strong>5 imobiliárias em Sorocaba</strong> e <strong>1 imobiliária no Rio de Janeiro</strong>.</p>
+    <button class="cta" onclick="window.location.href='#contato'">Quero resultados agora</button>
+  </section>
+
+  <section id="sobre">
+    <h3>Quem Somos</h3>
+    <p>A <strong>Barreto Digital</strong> nasceu da visão de <strong>Felipe Souza Barreto</strong>, profissional com mais de 6 anos de experiência no ramo imobiliário e 4 anos de atuação no marketing digital. Após anos liderando operações de vendas e estratégias de captação de clientes, Felipe decidiu unir seus conhecimentos em performance, funil de vendas e comportamento do consumidor para criar uma agência voltada à geração de resultados reais.<br><br>
+    Hoje, a Barreto Digital conta com uma equipe especializada em <strong>tráfego pago, automação de atendimento e criação de imagens personalizadas</strong> para cada nicho do <strong>mercado imobiliário</strong>. Nosso propósito é simples: <em>transformar investimento em retorno</em>, cliques em clientes e marcas em resultados mensuráveis.</p>
+  </section>
+
+  <section id="servicos" class="section-dark">
+    <h3>Serviços</h3>
+    <div class="cards">
+      <div class="card"><h4>Tráfego Pago</h4><p>Campanhas otimizadas no Meta Ads e Google Ads que geram leads qualificados e aumentam suas vendas.</p></div>
+      <div class="card"><h4>Automação de WhatsApp</h4><p>Fluxos automáticos que atendem 24h e aceleram o fechamento de negócios.</p></div>
+      <div class="card"><h4>Landing Pages</h4><p>Páginas modernas e otimizadas para conversão, integradas com seu CRM.</p></div>
+      <div class="card"><h4>Gestão de Leads</h4><p>Organização inteligente com relatórios e acompanhamento automatizado.</p></div>
+      <div class="card"><h4>Geração de Criativos</h4><p>Criação de imagens e vídeos com impacto visual e foco em performance.</p></div>
+    </div>
+  </section>
+
+  <section id="resultados">
+    <h3>Resultados Reais</h3>
+    <p>Geramos atualmente mais de <strong>1.500 leads por mês</strong> de forma contínua e escalável, distribuídos em <strong>8 cidades no país</strong>. Nosso trabalho vai além dos números — criamos estratégias sob medida para cada parceiro, otimizando investimento, reduzindo o custo por lead e elevando a conversão a um novo patamar.</p>
+  </section>
+
+  <section id="depoimentos" class="section-dark">
+    <h3>Depoimentos & Cases Reais</h3>
+    <p>Esses resultados comprovam o impacto da <strong>Barreto Digital</strong> no mercado, consolidando nossa reputação como referência em tráfego pago e performance para o setor imobiliário e outros nichos.<br><br>
+    Em apenas 25 dias de campanhas, as imobiliárias parceiras alcançaram resultados expressivos. O tráfego pago da <strong>Barreto Digital</strong> gerou mais de <strong>1.500 leads</strong>, com custo médio por lead abaixo de R$3,00, somando milhares de impressões e um alcance impressionante em todo o Brasil.<br><br>
+    Campanhas de sucesso como <strong>Top House</strong> e <strong>Imob Meu Apê</strong> comprovam nossa performance e o retorno imediato que entregamos aos nossos parceiros.</p>
+    <a href="https://ibb.co/gMrqLGfW"><img src="https://i.ibb.co/WWH84QMz/Captura-de-tela-2025-10-25-200424.png" alt="Resultados de Campanha" style="max-width:100%;border-radius:12px;margin-top:30px;box-shadow:0 0 25px rgba(0,0,0,0.5);"></a>
+  </section>
+
+  <section id="contato">
+    <h3>Entre em Contato</h3>
+    <p>Quer resultados reais e crescimento imediato? Fale com nossa equipe especializada.</p>
+    <a class="cta" href="https://wa.me/5515991092251" target="_blank">📞 Falar no WhatsApp</a>
+  </section>
+
+  <a class="whatsapp-float" href="https://wa.me/5515991092251" target="_blank">💬</a>
+
+  <footer>
+    © 2025 Barreto Digital | Todos os direitos reservados.<br>CNPJ: 57.189.756/0001-48 | 📧 barretodigitall@hotmail.com | Aberto a propostas e parcerias.
+  </footer>
+</body>
+</html>
